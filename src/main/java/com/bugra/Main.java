@@ -1,4 +1,4 @@
-package com.bugra.entity;
+package com.bugra;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +12,8 @@ import javax.persistence.criteria.Root;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.bugra.entity.Person;
 
 public class Main
 {
@@ -40,31 +42,10 @@ public class Main
                 .setParameter(nameParameter, Arrays.asList("bugra", "gulsabah"))
                 .getResultList();
 
-        for(String p : personList) {
-            logger.info(p);
-        }
+        personList.forEach(logger::info);
 
         em.close();
         emf.close();
-    }
-
-
-    static class A {
-
-
-        public <T> boolean test(final T id) {
-            System.out.println(id);
-            return true;
-        }
-
-    }
-
-    static class B extends A {
-
-        @Override
-        public <T> boolean test(final T id) {
-            return false;
-        }
     }
 
 }
